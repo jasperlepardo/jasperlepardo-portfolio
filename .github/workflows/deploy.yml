@@ -1,54 +1,50 @@
-name: Build & Deploy
+name: Build & Deploy Jekyll site
 
+# Trigger on pushes to main (or whatever branch you use)
 on:
   push:
-    branches: [main]
-
-permissions:
-  contents: write
-  pages:    write
-  id-token: write
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v3
-        with:
-          persist-credentials: true
-          fetch-depth: 0
+      # 1. Grab your code
+      - uses: actions/checkout@v4
 
-      - name: Set up Ruby
+      # 2. Install Ruby, Bundler & gems
+      - name: Setup Ruby & install gems
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.2.2
-          bundler-cache: true
-
-      - name: Install Gems
-        run: |
+      - run: |
+          bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
-          bundle exec jekyll build --destination _site
 
-      - name: Debug Tailwind output
-        run: |
-          echo "-- ls on your output dir --"
-          ls -R _site/assets/css || true
-          echo "-- head of main.css (if it exists) --"
-          head -n20 _site/assets/css/main.css || true
+      # 3. Build your Jekyll site into _site
+      - name: Build Jekyll site
+        run: bundle exec jekyll build \
+          --source . \
+          --destination _site
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      # 4. (Optional) Show a preview of tailwind-generated CSS
+      - name: Inspect generated CSS
+        run: head -n 20 _site/assets/css/main.css || true
+
+      # 5. Upload the built site so deploy step can grab it
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          node-version: 18
-          cache: "npm"      # ← only here!
+          path: _site
 
-      - name: Build CSS
-        run: npm ci && npm run build:css
-
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write           # allow this job to push to gh-pages
+      id-token: write        # for the deploy action
+    steps:
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir:   ./_site
-          publish_branch: gh-pages
+        uses: actions/deploy-pages@v1
