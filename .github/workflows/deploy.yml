@@ -17,35 +17,36 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Clone your repo (full history so first-time deploy can create gh-pages)
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
 
-      # Ruby + Bundler (for Jekyll)
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.2.2
-          cache: bundler
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.2.2
+        cache: bundler
 
-      # Node + Tailwind build
-      - name: Setup Node.js & build CSS
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-      - run: |
-          npm ci
-          npm run build:css
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
 
-      # Install gems & build the site
-      - run: bundle install --jobs 4 --retry 3
-      - run: bundle exec jekyll build --destination _site
+    - name: Install JS dependencies & build Tailwind CSS
+      run: |
+        npm ci
+        npm run build:css
 
-      # Finally, deploy the contents of _site → gh-pages
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          publish_dir: ./_site
-          publish_branch: gh-pages
-          # GITHUB_TOKEN is automatic
+    - name: Install Ruby gems
+      run: bundle install --jobs 4 --retry 3
+
+    - name: Build Jekyll site
+      run: bundle exec jekyll build --destination _site
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./_site
+        publish_branch: gh-pages
