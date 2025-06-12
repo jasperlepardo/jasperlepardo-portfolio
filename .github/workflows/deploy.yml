@@ -30,6 +30,13 @@ jobs:
           bundle install --jobs 4 --retry 3
           bundle exec jekyll build --destination _site
 
+      - name: Debug Tailwind output
+        run: |
+          echo "-- ls on your output dir --"
+          ls -R _site/assets/css || true
+          echo "-- head of main.css (if it exists) --"
+          head -n20 _site/assets/css/main.css || true
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
