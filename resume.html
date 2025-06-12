@@ -5,33 +5,22 @@ custom-stylesheet:
 transition: 
 ---
 
-
-
 <div class="grid grid-cols-12 gap-10 grid-flow-row">
-
     <div class="col-span-4">
-
         <img class="max-h-60 m-auto rounded-full" src="{{ site.baseurl }}/assets/img/profile-picture.webp" alt="" />
-
     </div>
-
     <div class="col-span-8 col-start-5 content-center">
-
         <h1 class="text-5xl leading-tight"><b>{{ site.data.resume.personal-information.name }}</b></h1>
         <p class="text-2xl">{{ site.data.resume.personal-information.title }}</p>
-
         <ul class="grid grid-cols-2 gap-x-4 gap-y-2 grid-flow-row mt-4">
             {% for contact-details in site.data.resume.personal-information.contact-details %}
                 <li><b>{{ contact-details.name }}</b>: {{ contact-details.value }}</li>
             {% endfor %}
         </ul>
-        
     </div>
-
 </div>
 
 <div class="grid grid-cols-12 gap-10 grid-flow-row">
-
     <div class="col-span-4">
 
         <h2 class="text-2xl mt-10 leading-tight"><b>About</b></h2>
@@ -105,9 +94,7 @@ transition:
         -->
 
     </div>
-
     <div class="col-span-8">
-
         <h2 class="text-2xl mt-10 leading-tight"><b>Professional Experience</b></h2>
         {% for task in site.data.resume.professional-experience %}
             <h3 class="mt-4 leading-tight"><b>{{ task.name }}</b></h3>
@@ -119,7 +106,6 @@ transition:
                 </ul>
             {% endif %}
         {% endfor %}
-
         <h2 class="text-2xl mt-10 leading-tight"><b>Work Experiences</b></h2>
         {% for work in site.data.resume.employment-history %}
             <h3 class="mt-4 leading-tight"><b>{{ work.position }}</b>, {{ work.company }} - {{ work.location }}</h3>
@@ -140,7 +126,6 @@ transition:
                 </ul>
             {% endif %}
         {% endfor %}
-
         <h2 class="text-2xl mt-10 leading-tight"><b>Education</b></h2>
         {% for education in site.data.resume.educations %}
             <h3 class="mt-4 leading-tight"><b>{{ education.degree }}</b></h3>
@@ -152,15 +137,10 @@ transition:
             </ul>
             <!-- <p>{{ education.start-date }} {% if education.start-date %}-{% endif %} {{ education.end-date }}</p> -->
         {% endfor %}
-
     </div>
-
 </div>
 
-
-
 <p>I hereby certify that all information stated herewith are true and correct to the best of my knowledge and beliefs.</p>
-
 <h3 class="mt-4 leading-tight"><b>{{ site.data.resume.personal-information.name | upcase }}</b></h3>
 <p>{{ site.data.resume.personal-information.title }}</p>
 <ul class="mt-2">
