@@ -31,13 +31,13 @@ jobs:
         run: npm ci
 
       - name: Build Tailwind CSS
-        run: npx tailwindcss -i ./assets/css/main.css -o ./assets/css/main.css --minify
+        run: npx @tailwindcss/cli -i ./assets/css/main.css -o ./_site/assets/css/main.css --minify
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.2.2
-          cache: bundler
+          bundler-cache: bundler
 
       - name: Install Ruby gems
         run: bundle install --jobs 4 --retry 3
