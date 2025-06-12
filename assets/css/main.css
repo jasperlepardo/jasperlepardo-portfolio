@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@theme {
+/* @theme {
 
   --text-*: initial;
   --text-xxs: 0.625rem;
@@ -19,7 +19,7 @@
   --text-7xl: 4rem;
 
   --font-sans: GT-Walsheim-Pro, sans-serif;
-}
+} */
 
 /*
   The default border color has changed to `currentcolor` in Tailwind CSS v4,
