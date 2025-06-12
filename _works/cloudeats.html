@@ -1,0 +1,138 @@
+---
+layout: content
+
+name: "Redesigning KDS Status for Accessibility"
+description: "Enhanced real-time kitchen efficiency by making CloudEats’ order status system accessible to color-blind staff."
+
+heading: Designing an Inclusive Kitchen Display System for CloudEats
+summary: "Over a one-week sprint, I redesigned CloudEats' Kitchen Display System (KDS) to better support color-blind users. Inspired by Trello’s color-blind friendly labels, I introduced a dual-coded visual system using both color and pattern. The result: faster order recognition, zero confusion, and a more inclusive kitchen experience."
+
+tags:
+    - UI/UX
+    - Mobile
+
+project-overview:
+    - name: Company
+      value: CloudEats
+    - name: Type
+      value: Internal UX Initiative
+    - name: Role
+      value: Lead Product Designer
+    - name: Tools
+      value: Figma, Figjam
+    - name: Timeline
+      value: 1 week
+    - name: Impact
+      value: Pattern-enhanced order status system for accessible, real-time order management
+
+categories: "featured"
+
+# external-url: https://dribbble.com/shots/24239220-Peddlr-Mobile-POS-Software
+
+figma: "https://www.figma.com/proto/aT2dGr8nzyjS5Mze0c9bnW/Peddlr---Redesign?page-id=0%3A1&node-id=1-2&t=yLOJ4kxRPodAtle0-0&scaling=min-zoom&hide-ui=1"
+
+live-site:
+---
+
+<div class="mt-40 max-w-4xl mx-auto">
+    <h3 class="font-bold text-zinc-200 mb-4 uppercase">Introduction</h3>    
+    <p class="text-xl text-zinc-300 font-light mb-4 leading-tight">CloudEats is a cloud kitchen company operating multiple delivery-only brands in a shared, high-volume kitchen environment. The Kitchen Display System (KDS) is the team’s central hub for managing orders—but it relied heavily on color to indicate status, making it difficult for color-blind staff to keep up during peak hours.</p>
+    <p class="text-xl text-zinc-300 font-light mb-4 leading-tight">My challenge: redesign the KDS to ensure order clarity for all team members, especially under pressure and across varying types of color vision.</p>
+</div>
+
+<div class="mt-40 max-w-4xl mx-auto">
+    <h3 class="font-bold text-zinc-200 mb-4 uppercase">Approach</h3>
+    <p class="text-xl text-zinc-300 font-light leading-tight">This was a focused, accessibility-first sprint. I followed a lean UX process:</h2>
+    <ul class="list-disc text-zinc-300 pl-8 text-xl font-light">
+        <li>Conducted on-site observations and staff interviews across multiple CloudEats kitchens</li>
+        <li>Simulated color blindness conditions to identify failure points</li>
+        <li>Audited the existing UI for over-reliance on color and lack of contrast</li>
+        <li>Prototyped a pattern-based status system inspired by Trello’s color-blind labels</li>
+        <li>Ran usability tests with color-blind and neurotypical team members</li>
+     </ul>
+</div>
+
+<div class="mt-40 max-w-4xl mx-auto">
+    <h3 class="font-bold text-blue-500 mb-4 uppercase">Design Enhancements</h3>
+    <p class="text-3xl leading-tight">From Visual Guesswork to Fast, Pattern-Based Clarity</p>
+</div>
+
+<div class="mt-10">
+    <img class="rounded-2xl mt-10" loading="lazy" src="{{ site.baseurl }}/assets/img/cloudeats/cloudeats-1.png" alt="" />
+</div>
+
+
+<div class="grid grid-cols-3 grid-flow-col gap-10">
+    <div class="bg-zinc-50 text-zinc-800 mt-10 rounded-2xl">
+        <img src="{{ site.baseurl }}/assets/img/cloudeats/cloudeats-2.png" alt="">
+        <div class="p-6">
+            <h3 class="font-bold text-blue-500 mb-4">Redundant Visual Cues</h3>
+            <p>Introduced pattern overlays for each status (e.g., stripes, dots, grids) in addition to color, making states unmistakable under any vision condition.</p>
+        </div>
+    </div>
+    <div class="bg-zinc-50 text-zinc-800 mt-10 rounded-2xl">
+        <img src="{{ site.baseurl }}/assets/img/cloudeats/cloudeats-2.png" alt="">
+        <div class="p-6">
+            <h3 class="font-bold text-blue-500 mb-4">Contrast and Icon Clarity</h3>
+            <p>Enhanced UI contrast and icon visibility to support quick scanning in dim kitchen environments.</p>
+        </div>
+    </div>
+    <div class="bg-zinc-50 text-zinc-800 mt-10 rounded-2xl">
+        <img src="{{ site.baseurl }}/assets/img/cloudeats/cloudeats-2.png" alt="">
+        <div class="p-6">
+            <h3 class="font-bold text-blue-500 mb-4">nclusive by Default</h3>
+            <p>Rolled out the new visual system across all KDS screens without requiring users to toggle accessibility modes—baking inclusion into the base experience.</p>
+        </div>
+    </div>
+</div>
+
+<div class="mt-40 max-w-4xl mx-auto">
+    <h3 class="font-bold text-red-500 mb-4 uppercase">Problem</h3>
+    <p class="text-3xl leading-tight">Why the Original Design Didn’t Work for CloudEats' Color-Blind Staff</p>
+</div>
+
+<div class="grid grid-cols-2 grid-flow-col gap-10">
+    <div class="bg-zinc-50 text-zinc-800 mt-10 rounded-2xl">
+        <img src="{{ site.baseurl }}/assets/img/cloudeats/cloudeats-2.png" alt="">
+        <div class="p-6">
+            <h3 class="font-bold text-red-500 mb-4">Status Confusion During Rush Hours</h3>
+            <p>Users with red-green or blue-yellow color blindness struggled to distinguish key states like “In Progress” vs “Ready.”</p>
+        </div>
+    </div>
+    <div class="bg-zinc-50 text-zinc-800 mt-10 rounded-2xl">
+        <img src="{{ site.baseurl }}/assets/img/cloudeats/cloudeats-2.png" alt="">
+        <div class="p-6">
+            <h3 class="font-bold text-red-500 mb-4">Low Lighting + Speed = Errors</h3>
+            <p>Poor visibility combined with high-pressure workflows led to frequent misreads and order delays.</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="mt-40 max-w-4xl mx-auto">
+    <h3 class="font-bold text-green-500 mb-4 uppercase">Solution</h3>
+    <p class="text-3xl leading-tight">Trello-Inspired Pattern Tags for Clear, Inclusive Order Management</p>
+</div>
+
+<div class="grid grid-cols-2 grid-flow-col gap-10">
+    <div class="bg-zinc-50 text-zinc-800 mt-10 rounded-2xl">
+        <img src="{{ site.baseurl }}/assets/img/cloudeats/cloudeats-2.png" alt="">
+        <div class="p-6">
+            <h3 class="font-bold text-green-500 mb-4">Patterned Status Overlays for Immediate Recognition</h3>
+            <p>Each status now uses a unique, high-contrast pattern:</p>
+        </div>
+    </div>
+    <div class="bg-zinc-50 text-zinc-800 mt-10 rounded-2xl">
+        <img src="{{ site.baseurl }}/assets/img/cloudeats/cloudeats-2.png" alt="">
+        <div class="p-6">
+            <h3 class="font-bold text-green-500 mb-4">Simplified Visual Hierarchy</h3>
+            <p>Reduced visual noise and grouped critical actions near order cards. This allowed faster processing regardless of screen familiarity or visual acuity.</p>
+        </div>
+    </div>
+</div>
+
+<div class="mt-40 max-w-4xl mx-auto">
+    <h3 class="font-bold text-zinc-200 mb-4 uppercase">Reflection</h3>
+    <p class="text-2xl text-zinc-300 font-light mb-4 leading-tight">Designing for color blindness at CloudEats reminded me that accessibility and performance aren’t at odds. By borrowing from proven models like Trello and grounding decisions in real kitchen feedback, we created a system that feels smarter, faster, and more fair for every team member.</p>
+    <p class="text-2xl text-zinc-300 font-light mb-4 leading-tight">This project also reaffirmed my belief in inclusive design as a baseline—not an optional layer.</p>
+</div>

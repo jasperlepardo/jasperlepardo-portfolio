@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+
+    {% include favicons.html %}
+
+    {% include open-graph.html %}
+
+    {% if site.google-font %}
+      <!-- Google Font -->
+      <link href="{{ site.custom-font }}" rel="stylesheet">
+    {% endif %}
+
+    {% if site.fontawesome %}
+      <!-- FontAwesome 5 -->
+      <script src="{{ site.fontawesome }}" crossorigin="anonymous"></script>
+    {% endif %}
+
+    {% if site.material-icon %}
+      <!-- Google Material Icon -->
+      <script src="{{ site.material-icon }}" crossorigin="anonymous"></script>
+    {% endif %}
+
+    <!-- STYLESHEET -->
+
+    <!-- Main -->
+    <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+
+    <!-- PLUGINS -->
+
+    {% if site.isPWA %}
+      <!-- PWA -->
+      <link rel="manifest" href="{{ site.baseurl }}/manifest.json">
+    {% endif %}
+    
+  </head>
+  
+  <body class="bg-zinc-100 dark:bg-zinc-950 text-zinc-950 dark:text-zinc-50">
+    {{ content }}
+  </body>
+
+</html>

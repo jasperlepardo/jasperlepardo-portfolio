@@ -1,43 +1,37 @@
-<!DOCTYPE html>
-<html lang="{{ site.lang | default: "en-US" }}">
-  <head>
+---
+layout: base
+layout-type: #container | container-fluid
+custom-stylesheet: 
+---
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="utf-8">
+<nav class="container mx-auto mt-12 py-6 px-4 md:px-8 print:hidden">
+  <a class="text-xl text-zinc-950 dark:text-zinc-300" href="{{ site.baseurl }}/"><b>JASPER LEPARDO</b><span class="text-zinc-500"> — Product Designer</span></a>
+  <!-- <a class="nav-link"  href="{{ site.baseurl }}/my-calendar.html">Let's connect</a> -->
+</nav>
 
-    {% include favicons.html %}
+<main class="mx-auto px-4 md:px-8 {% if page.layout-type %}{{page.layout-type}}{% else %}{{ layout.layout-type | default: 'container'}}{%endif%}">
+  {{ content }}
+</main>
 
-    {% include open-graph.html %}
+<footer class="container max-w-7xl mx-auto mt-20 py-4 px-4 md:px-8 print:hidden">
+  <h2 class="text-7xl font-bold text-zinc-950 dark:text-zinc-50">Say Hello.</h2>
+  <p class="text-2xl pb-12 text-zinc-950 dark:text-zinc-50">email <a href="mailto:{{ site.data.personal-information.email-address }}">{{ site.data.personal-information.email-address }}</a></p>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg">
+      </div>
+      <div class="col-lg-auto">
+        <!-- <p><b>Social Media</b></p> -->
+        <ul class="list-inline" id="social-media">
+          {% for social-media in site.data.personal-information.social-media %}
+            <li class="list-inline-item">
+              <a href="{{ social-media.url }}"><i class="{{ social-media.icon }}"></i></a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <p>Copyright © <span id="current-year"></span> Jasper Lepardo. <br class="d-lg-none"/> All rights reserved.</p>
+  </div>
+</footer>
 
-    {% if site.google-font %}
-      <!-- Google Font -->
-      <link href="{{ site.custom-font }}" rel="stylesheet">
-    {% endif %}
-
-    {% if site.fontawesome %}
-      <!-- FontAwesome 5 -->
-      <script src="{{ site.fontawesome }}" crossorigin="anonymous"></script>
-    {% endif %}
-
-    {% if site.material-icon %}
-      <!-- Google Material Icon -->
-      <script src="{{ site.material-icon }}" crossorigin="anonymous"></script>
-    {% endif %}
-
-    <!-- STYLESHEET -->
-
-    <!-- Main -->
-    <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
-
-    <!-- PLUGINS -->
-
-    {% if site.isPWA %}
-      <!-- PWA -->
-      <link rel="manifest" href="{{ site.baseurl }}/manifest.json">
-    {% endif %}
-    
-  </head>
-  <body>
-    {{ content }}
-  </body>
-</html>

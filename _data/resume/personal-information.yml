@@ -1,0 +1,114 @@
+name: Jasper John L. Lepardo
+title: Product Designer
+contact-details:
+- name: Mobile Number
+  value: +63 991 008 0512
+- name: Emaill Address
+  value: me@jasperlepardo.com
+- name: Home Address
+  value: Dasmariñas, Cavite, PH
+- name: Portfolio
+  value: 'http://www.jasperlepardo.com'
+
+summary: With a decade of hands-on experience in Web Design & Development, I've nurtured a unique blend of creative flair and technical know-how. My journey has exposed me to diverse projects, where I've relished crafting interfaces that seamlessly merge aesthetics with functionality.
+
+core-competencies:
+- name: UI/UX Design
+  skills:
+  - User-Centered Design
+  - Wireframing
+  - Prototyping
+  - Interaction Design
+  - Responsive Design
+- name: Research &amp; Analysis
+- skills:
+  - User Interviews
+  - Usability Testing
+  - Persona Creation
+  - Journey Mapping
+- name: Technical Skills
+- skills:
+  - HTML 5
+  - CSS 3
+  - JavaScript
+  - jQuery
+  - Sass/Less
+  - Github
+  - Jekyll
+- name: Tools
+- skills:
+  - Figma
+  - Axure
+  # - Adobe Creative Suite (Photoshop, Illustrator, After Effects)
+  - JIRA
+  - Slack
+  - Miro
+  - Notion
+
+
+skills:
+  - Brand and Identity
+  - Customer Journey Mapping
+  - Design System
+  - Design Thinking
+  - Design Sprint
+  - Front-End Design
+  - Graphic Design
+  - Interaction Design
+  - Mobile App Design
+  - Motion Graphics
+  - Persona
+  - Prototyping
+  - Responsive Web Design
+  - UI/UX Design
+  - User Testing
+  - User Interview
+  - Visual Design
+  - Web App Design
+  - Wireframing
+
+tools:
+  - design:
+    - Adobe After Effects
+    - Adobe XD
+    - Adobe Illustrator
+    - Adobe InDesign
+    - Adobe Photoshop
+    - Axure
+    - Figma
+    - Invision
+    - Sketch
+  - collaboration:
+    - JIRA
+    - Loom
+    - Miro
+    - Notion
+    - Slack
+  - development:
+    - HTML 5
+    - CSS 3
+    - Github Pages
+    - JavaScript
+    - Jekyll
+    - jQuery
+    - Sass/Less
+
+social-media:
+  - name: Behance
+    icon: fab fa-behance-square
+    url: https://www.behance.net/jasperlepardo/
+  - name: Dribble
+    icon: fab fa-dribbble-square
+    url: https://dribbble.com/jasperlepardo/
+  - name: Facebook
+    icon: fab fa-facebook-square
+    url: https://www.facebook.com/jasperlepardo/
+  - name: Github
+    icon: fab fa-github-square
+    url: https://github.com/jasperlepardo/
+  - name: Instagram
+    icon: fab fa-instagram-square
+    url: https://www.instagram.com/jasperlepardo/
+  - name: LinkedIn
+    icon: fab fa-linkedin
+    url: https://www.linkedin.com/in/jasperlepardo/

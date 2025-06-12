@@ -1,0 +1,23 @@
+---
+layout: default
+layout-type: #container | container-fluid
+custom-stylesheet: 
+---
+
+<div class="mt-10 max-w-4xl mx-auto">
+    <h1 class="text-5xl leading-tight">{{ page.heading }}</h1>
+    <p class="text-xl mt-6 text-zinc-300 pl-4 font-light border-l-4 border-zinc-300"><b class="font-bold">TL;DR</b>: {{ page.summary }}</p>
+</div>
+
+<img class="mt-10 rounded-2xl" loading="lazy" src="{{ site.baseurl }}/assets/img/{{ page.title | downcase | replace: ' ','-' }}.png" alt="" />
+
+<div class="bg-zinc-50 text-zinc-800 grid grid-cols-3 gap-4 grid-flow-row mt-10 rounded-2xl p-12">
+    {% for project-overview in page.project-overview %}
+        <div>
+            <h3 class="font-bold text-blue-500">{{ project-overview.name }}</h3>
+            <p>{{ project-overview.value }}</p>
+        </div>
+    {% endfor %}
+</div>
+
+{{ content }}
