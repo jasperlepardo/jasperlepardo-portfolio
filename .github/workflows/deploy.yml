@@ -1,43 +1,51 @@
 name: Build & Deploy to GitHub Pages
 
+# 1) Run on each push to your source branch (main), not on gh-pages.
 on:
   push:
-    branches: [ main ]      # ← build when you push to `main`
+    branches:
+      - main
+
+# 2) Grant the Pages API scope so peaceiris can push.
+permissions:
+  contents: read       # you need to checkout code
+  pages: write         # allow gh-pages deploy
+  id-token: write      # required by some Actions for OIDC auth
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
 
     steps:
+      # Clone your repo (full history so first-time deploy can create gh-pages)
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0     # ensures full history
+          fetch-depth: 0
 
+      # Ruby + Bundler (for Jekyll)
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.2.2
           cache: bundler
 
-      - name: Setup Node.js
+      # Node + Tailwind build
+      - name: Setup Node.js & build CSS
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-
-      - name: Install JS deps & build Tailwind
-        run: |
+      - run: |
           npm ci
           npm run build:css
 
-      - name: Install Ruby gems
-        run: bundle install --jobs 4 --retry 3
+      # Install gems & build the site
+      - run: bundle install --jobs 4 --retry 3
+      - run: bundle exec jekyll build --destination _site
 
-      - name: Build Jekyll site
-        run: bundle exec jekyll build --destination _site
-
+      # Finally, deploy the contents of _site → gh-pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./_site
           publish_branch: gh-pages
+          # GITHUB_TOKEN is automatic
