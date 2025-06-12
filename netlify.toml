@@ -1,0 +1,9 @@
+[build]
+  base    = ""                     # your repo root
+  publish = "_site"
+  command = "npm run build"
+
+[context.production.environment]
+  # ensure Ruby & Node versions match your local setup
+  RUBY_VERSION = "3.1.2"
+  NODE_VERSION = "20"

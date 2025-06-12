@@ -5,7 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "tailwind": "npx @tailwindcss/cli -i ./assets/css/main.css -o ./_site/assets/css/main.css --minify --watch",
-    "build:css": "npx @tailwindcss/cli -i  ./assets/css/main.css -o ./_site/assets/css/main.css --minify"
+    "build:css": "npx @tailwindcss/cli -i ./assets/css/main.css -o _site/assets/css/main.css --minify",
+    "build": "npm run build:css && bundle exec jekyll build"
   },
   "keywords": [],
   "author": "",
@@ -15,9 +16,5 @@
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.49",
     "tailwindcss": "^4.1.8"
-  },
-  "devDependencies": {
-    "@tailwindcss/cli": "^4.1.10",
-    "@tailwindcss/typography": "^0.5.16"
   }
 }
