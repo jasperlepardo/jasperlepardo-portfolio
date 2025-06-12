@@ -8,4 +8,4 @@ gem 'ostruct'
 gem 'base64'
 
 
-gem 'sass-embedded', '~> 1.84.0'
+gem 'sass-embedded', '~> 1.85.0'
