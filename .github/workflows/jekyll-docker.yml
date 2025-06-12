@@ -17,12 +17,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - run: npm ci
+      - run: npm run tailwind
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.2'
           bundler-cache: true
-      - run: npm ci
-      - run: npm run tailwind
       - run: bundle install
       - run: bundle exec jekyll build
       - uses: actions/upload-pages-artifact@v3
