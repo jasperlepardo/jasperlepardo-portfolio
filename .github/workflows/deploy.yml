@@ -1,43 +1,45 @@
 name: Build & Deploy to GitHub Pages
 
-# 1) Run on each push to your source branch (main), not on gh-pages.
+# Trigger on pushes to your source branch (e.g. main or master)
 on:
   push:
     branches:
       - main
 
-# 2) Grant the Pages API scope so peaceiris can push.
+# Give the workflow permission to write your repo and Pages branch
 permissions:
-  contents: read       # you need to checkout code
-  pages: write         # allow gh-pages deploy
-  id-token: write      # required by some Actions for OIDC auth
+  contents: write      # so we can push commits
+  pages: write         # for GitHub Pages API
+  id-token: write      # required by some Actions
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      # Get full history and leave the token in the checkout so later steps can push
+      - uses: actions/checkout@v3
         with:
+          persist-credentials: true
           fetch-depth: 0
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2.x
+          cache: bundler
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: 18
+          cache: npm
 
       - name: Install JS dependencies
         run: npm ci
 
       - name: Build Tailwind CSS
-        run: npx @tailwindcss/cli -i ./assets/css/main.css -o ./_site/assets/css/main.css --minify
-
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 3.2.2
-          bundler-cache: bundler
+        run: npm run build:css
 
       - name: Install Ruby gems
         run: bundle install --jobs 4 --retry 3
@@ -48,6 +50,9 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
+          # the automatically injected token has the permissions above
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./_site
           publish_branch: gh-pages
+          # if you want to orphan the branch each time:
+          # force_orphan: true
