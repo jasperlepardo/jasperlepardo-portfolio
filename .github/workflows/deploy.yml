@@ -2,7 +2,7 @@ name: Build & Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ gh-pages ]
+    branches: [ main ]      # ← build when you push to `main`
 
 jobs:
   build-deploy:
@@ -10,12 +10,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0     # ensures full history
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.2.2    # now ≥ 3.2 so sass-embedded installs cleanly
-          bundler-cache: bundler
+          ruby-version: 3.2.2
+          cache: bundler
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -27,7 +29,7 @@ jobs:
           npm ci
           npm run build:css
 
-      - name: Install Ruby dependencies      # ← new step
+      - name: Install Ruby gems
         run: bundle install --jobs 4 --retry 3
 
       - name: Build Jekyll site
