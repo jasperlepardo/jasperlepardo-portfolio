@@ -1,50 +1,56 @@
 name: Build & Deploy Jekyll site
 
-# Trigger on pushes to main (or whatever branch you use)
 on:
   push:
     branches:
       - main
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write       # allow publishing to GitHub Pages
+  id-token: write    # needed by deploy-pages@v1
+
 jobs:
   build:
-    runs-on: ubuntu-latest
-    steps:
-      # 1. Grab your code
-      - uses: actions/checkout@v4
+    name: Build site
+    runs-on: ubuntu-24.04
 
-      # 2. Install Ruby, Bundler & gems
-      - name: Setup Ruby & install gems
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby & install gems
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.2.2
-      - run: |
+      - name: Bundle install
+        run: |
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
 
-      # 3. Build your Jekyll site into _site
       - name: Build Jekyll site
-        run: bundle exec jekyll build \
-          --source . \
-          --destination _site
+        run: |
+          bundle exec jekyll build \
+            --source . \
+            --destination _site
 
-      # 4. (Optional) Show a preview of tailwind-generated CSS
       - name: Inspect generated CSS
         run: head -n 20 _site/assets/css/main.css || true
 
-      # 5. Upload the built site so deploy step can grab it
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: _site
+          artifact_name: pages
 
   deploy:
+    name: Deploy to GitHub Pages
     needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write           # allow this job to push to gh-pages
-      id-token: write        # for the deploy action
+    runs-on: ubuntu-24.04
+
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Deploy Pages
         uses: actions/deploy-pages@v1
+        with:
+          artifact_name: pages
