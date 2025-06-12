@@ -4,10 +4,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "tailwind": "npx @tailwindcss/cli -i ./assets/css/main.css -o ./_site/assets/css/main.css --minify --watch",
-    "build:css": "npx tailwindcss -i ./assets/css/main.css -o ./_site/assets/css/main.css --minify",
-    "build": "npm run build:css && bundle exec jekyll build",
-    "serve": "npm run build:css && bundle exec jekyll serve"
+    "tailwind": "npx tailwindcss -i ./assets/css/main.css -o ./_site/assets/css/main.css --minify",
+    "build:css": "tailwindcss -i ./assets/css/main.css -o ./assets/css/styles.css --minify",
+    "build": "npm run build:css && bundle exec jekyll build"
   },
   "keywords": [],
   "author": "",
