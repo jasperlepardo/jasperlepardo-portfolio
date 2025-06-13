@@ -37,14 +37,16 @@ transition:
         </tr>
         <tr>
           <td style="font-size: 12px; font-family:Verdana, Helvetica, sans-serif;line-height: 18px; color: #727272; padding: 0; padding-bottom: 8px;" valign="top">
-            <b>M</b>: <a href="tel:{{ site.data.personal-information.mobile-number-1 }}" style="font-size: 12px; font-family:Verdana, Helvetica, sans-serif; line-height: 18px; color:#4C4C4C">{{ site.data.personal-information.mobile-number-1 }}</a> | <a href="tel:{{ site.data.personal-information.mobile-number-2 }}" style="font-size: 12px; font-family:Verdana, Helvetica, sans-serif; line-height: 18px; color:#4C4C4C">{{ site.data.personal-information.mobile-number-2 }}</a><br>
-            <b>E</b>: <a href="mailto:{{ site.data.personal-information.email-address }}" style="font-size: 12px; font-family:Verdana, Helvetica, sans-serif; line-height: 18px; color:#4C4C4C">{{ site.data.personal-information.email-address }}</a><br>
-            <b>S</b>: <a href="https://join.skype.com/invite/uzxMND8Oq3kM" style="font-size: 12px; font-family:Verdana, Helvetica, sans-serif; line-height: 18px; color:#4C4C4C">jasperlepardo</a>
+            {% for contact-details in site.data.resume.personal-information.contact-details %}
+              <p>
+                <b>{{ contact-details.name }}</b>: <span style="font-size: 12px; font-family:Verdana, Helvetica, sans-serif; line-height: 18px; color:#4C4C4C">{{ contact-details.value }}</span>
+              </p>
+            {% endfor %}
           </td>
         </tr>
         <tr>
           <td style="padding: 0; padding-top: 16px;" valign="top">
-            <img src="https://raw.githubusercontent.com/jasperlepardo/jasperlepardo.github.io/master/assets/common/signature-email/logo/logo_jsprlprd-gray.png" height="15">
+            <img src="https://raw.githubusercontent.com/jasperlepardo/jasperlepardo.github.io/master/assets/common/signature-email/logo/logo_jsprlprd-gray.png" style="height: 15px;">
           </td>
         </tr>
         <tr>
