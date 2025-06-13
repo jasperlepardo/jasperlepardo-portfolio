@@ -9,7 +9,7 @@ custom-stylesheet:
   <!-- <a class="nav-link"  href="{{ site.baseurl }}/my-calendar.html">Let's connect</a> -->
 </nav>
 
-<main class="mx-auto px-4 md:px-8 {% if page.layout-type %}{{page.layout-type}}{% else %}{{ layout.layout-type | default: 'container'}}{%endif%}">
+<main class="mx-auto max-w-7xl px-4 md:px-8 {% if page.layout-type %}{{page.layout-type}}{% else %}{{ layout.layout-type | default: 'container'}}{%endif%}">
   {{ content }}
 </main>
 

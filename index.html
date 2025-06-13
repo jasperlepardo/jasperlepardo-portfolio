@@ -28,7 +28,11 @@ transition:
       <a class="bg-zinc-100 dark:bg-zinc-900 overflow-hidden rounded-2xl" id="{{ work.name }}" target="_blank" href="{{ work.external-url | default: work.url | relative_url }}">
         <div class="grid grid-cols-2">
           <div class="lg:col-span-1 col-span-2 lg:order-2 bg-#{{ work.bgColor }}">
-            <img src="{{ '/assets/img/{{ work.title | downcase | replace: ' ','-' }}.png' | relative_url }}" alt=""/>
+            {% assign slug = work.title | downcase | replace: ' ', '-' %}
+            <img
+              src="{{ '/assets/img/' | append: slug | append: '.png' | relative_url }}"
+              alt="{{ work.title }}"
+            />
           </div>
           <div class="lg:col-span-1 col-span-2 flex flex-col gap-6 xl:p-14 lg:p-12 md:p-10 sm:p-8 p-6">
             <ul>
@@ -36,7 +40,7 @@ transition:
                 <li class="inline-block text-zinc-500">{{ tag }}</li> <span class="text-zinc-500 last-of-type:hidden">&#8226</span>
               {% endfor %}
             </ul>
-            <h3 class="text-5xl leading-tight font-bold  mb-2 text-zinc-800 dark:text-zinc-200">{{ work.name }}</h3>
+            <h3 class="text-5xl leading-tight font-bold  mb-2 text-zinc-800 dark:text-zinc-200">{{ work.title }}</h3>
             <p class="text-xl text-zinc-600 dark:text-zinc-400">{{ work.description }}</p>
           </div>
         </div>
