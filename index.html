@@ -28,7 +28,7 @@ transition:
       <a class="bg-zinc-100 dark:bg-zinc-900 overflow-hidden rounded-2xl" id="{{ work.name }}" target="_blank" href="{{ work.external-url | default: work.url | relative_url }}">
         <div class="grid grid-cols-2">
           <div class="lg:col-span-1 col-span-2 lg:order-2 bg-#{{ work.bgColor }}">
-            <img src="{{ site.baseurl }}/assets/img/{{ work.title | downcase | replace: ' ','-' }}.png" alt=""/>
+            <img src="{{ '/assets/img/{{ work.title | downcase | replace: ' ','-' }}.png' | relative_url }}" alt=""/>
           </div>
           <div class="lg:col-span-1 col-span-2 flex flex-col gap-6 xl:p-14 lg:p-12 md:p-10 sm:p-8 p-6">
             <ul>
