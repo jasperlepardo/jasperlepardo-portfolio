@@ -7,14 +7,29 @@ transition:
 
 <div class="flex gap-10 grid-flow-row">
     <img class="max-h-48 w-auto rounded-full" src="{{ '/assets/img/profile-picture.webp' | relative_url}}" alt="" />
-    <div class="content-center">
+    <div class="content-center w-full">
         <h1 class="text-5xl leading-tight"><b>{{ site.data.resume.personal-information.name }}</b></h1>
         <p class="text-2xl">{{ site.data.resume.personal-information.title }}</p>
-        <ul class="grid grid-cols-2 gap-x-4 gap-y-2 grid-flow-row mt-4">
-            {% for contact-details in site.data.resume.personal-information.contact-details %}
-                <li><b>{{ contact-details.name }}</b>: {{ contact-details.value }}</li>
-            {% endfor %}
-        </ul>
+        <table class="mt-3 w-full table-auto border-separate border-spacing-y-2 border-spacing-x-4 -mx-4">
+            <tbody>
+                <tr>
+                    <td>
+                        <p><b>Mobile Number</b>: {{ site.data.resume.personal-information.mobile-number }}</p>
+                    </td>
+                    <td>
+                        <p><b>Home Address</b>: {{ site.data.resume.personal-information.home-address }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p><b>Email Address</b>: {{ site.data.resume.personal-information.email-address }}</p>
+                    </td>
+                    <td>
+                        <p><b>Portfolio</b>: {{ site.data.resume.personal-information.website }}</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 

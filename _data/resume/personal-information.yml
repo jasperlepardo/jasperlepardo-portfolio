@@ -1,15 +1,9 @@
 name: Jasper John L. Lepardo
 title: Product Designer
-contact-details:
-- name: Mobile Number
-  value: +63 991 008 0512
-- name: Emaill Address
-  value: me@jasperlepardo.com
-- name: Home Address
-  value: Dasmariñas, Cavite, PH
-- name: Portfolio
-  value: 'http://www.jasperlepardo.com'
-
+mobile-number: +63 991 008 0512
+email-address: me@jasperlepardo.com
+home-address: Dasmariñas, Cavite, PH
+website: 'http://www.jasperlepardo.com'
 summary: With a decade of hands-on experience in Web Design & Development, I've nurtured a unique blend of creative flair and technical know-how. My journey has exposed me to diverse projects, where I've relished crafting interfaces that seamlessly merge aesthetics with functionality.
 
 core-competencies:
