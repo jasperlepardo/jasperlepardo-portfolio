@@ -1,27 +1,20 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support documentation.
-
 # Build and deploy a Jekyll site to GitHub Pages
 name: Deploy Jekyll site to Pages
 
 on:
-  # Trigger on push to the default branch
   push:
     branches:
       - main
-
-  # Manual trigger via the Actions tab
   workflow_dispatch:
 
 permissions:
-  contents: read   # to fetch repo contents
-  pages: write     # to publish to GitHub Pages
-  id-token: write  # to allow OIDC if needed by other actions
+  contents: read
+  pages: write
+  id-token: write
 
 concurrency:
   group: pages
-  cancel-in-progress: false  # never cancel a deployment that's already running
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -33,12 +26,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up Ruby
-        # uses the official ruby/setup-ruby action
-        uses: ruby/setup-ruby@v4
+        # Use the latest v1.x of ruby/setup-ruby
+        uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.2           # upgrade to Ruby ≥3.2 for sass-embedded compatibility
-          bundler-cache: true         # automatically runs bundle install and caches gems
-          cache-version: 1            # bump this if you ever need to invalidate gem cache
+          ruby-version: 3.2           # ensure compatibility with sass-embedded ≥1.89
+          bundler-cache: true
+          cache-version: 1
 
       - name: Configure Pages
         id: pages
