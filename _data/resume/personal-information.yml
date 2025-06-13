@@ -21,13 +21,13 @@ core-competencies:
   - Interaction Design
   - Responsive Design
 - name: Research &amp; Analysis
-- skills:
+  skills:
   - User Interviews
   - Usability Testing
   - Persona Creation
   - Journey Mapping
 - name: Technical Skills
-- skills:
+  skills:
   - HTML 5
   - CSS 3
   - JavaScript
@@ -36,7 +36,7 @@ core-competencies:
   - Github
   - Jekyll
 - name: Tools
-- skills:
+  skills:
   - Figma
   - Axure
   # - Adobe Creative Suite (Photoshop, Illustrator, After Effects)

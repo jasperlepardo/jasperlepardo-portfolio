@@ -5,166 +5,156 @@ custom-stylesheet:
 transition: 
 ---
 
-
-
-<div class="grid grid-cols-12 gap-10 grid-flow-row">
-
-    <div class="col-span-4">
-
-        <img class="max-h-60 m-auto rounded-full" src="{{ '/assets/img/profile-picture.webp' | relative_url}}" alt="" />
-
-    </div>
-
-    <div class="col-span-8 col-start-5 content-center">
-
+<div class="flex gap-10 grid-flow-row">
+    <img class="max-h-48 w-auto rounded-full" src="{{ '/assets/img/profile-picture.webp' | relative_url}}" alt="" />
+    <div class="content-center">
         <h1 class="text-5xl leading-tight"><b>{{ site.data.resume.personal-information.name }}</b></h1>
         <p class="text-2xl">{{ site.data.resume.personal-information.title }}</p>
-
         <ul class="grid grid-cols-2 gap-x-4 gap-y-2 grid-flow-row mt-4">
             {% for contact-details in site.data.resume.personal-information.contact-details %}
                 <li><b>{{ contact-details.name }}</b>: {{ contact-details.value }}</li>
             {% endfor %}
         </ul>
-        
     </div>
-
 </div>
 
-<div class="grid grid-cols-12 gap-10 grid-flow-row">
+<h2 class="text-2xl mt-6 leading-tight"><b>About</b></h2>
+<p class="mt-3 ">{{ site.data.resume.personal-information.summary }}</p>
 
-    <div class="col-span-4">
-
-        <h2 class="text-2xl mt-10 leading-tight"><b>About</b></h2>
-        <p>{{ site.data.resume.personal-information.summary }}</p>
-
-        <!-- <h2 class="text-2xl mt-10 leading-tight"><b>Skills</b></h2>
-        <ul class="mt-2">
-            {% for skills in site.data.resume.personal-information.skills %}
-                <li class="inline-block">{{ skills }}</li>
-            {% endfor %}
-        </ul> -->
-
-        <h2 class="text-2xl mt-10 leading-tight"><b>Core Competencies</b></h2>
-        {% for competency in site.data.resume.personal-information.core-competencies %}
-            <h3 class="mt-4 leading-tight"><b>{{ competency.name }}</b></h3>
-            <ul class="mt-2 list-disc pl-4">
-                {% for skill in competency.skills %}
-                    <li>{{ skill }}</li>
-                {% endfor %}
-            </ul>
-        {% endfor %}
-
-        <!-- <h3 class="mt-4 leading-tight"><b>Collaboration</b></h3>
-        <ul class="mt-2">
-            {% for tools in site.data.resume.personal-information.tools %}
-                {% for collaboration-tools in tools.collaboration %}
-                    <li class="inline-block">{{ collaboration-tools }}</li>
-                {% endfor %}
+<h2 class="text-2xl mt-6 leading-tight"><b>Professional Experience</b></h2>
+{% for task in site.data.resume.professional-experience %}
+    <h3 class="mt-3 leading-tight"><b>{{ task.name }}</b></h3>
+    {% if task.descriptions %}
+        <ul class="mt-2 list-disc pl-4">
+            {% for desciption in task.descriptions %}
+                <li>{{ desciption }}</li>
             {% endfor %}
         </ul>
+    {% endif %}
+{% endfor %}
 
-        <h3 class="mt-4 leading-tight"><b>Programming</b></h3>
-        <ul class="mt-2">
-            {% for tools in site.data.resume.personal-information.tools %}
-                {% for development-tools in tools.development %}
-                    <li class="inline-block">{{ development-tools }}</li>
-                {% endfor %}
-            {% endfor %}
-        </ul> -->
+<h2 class="text-2xl mt-6 leading-tight"><b>Work Experiences</b></h2>
+<table class="mt-3 w-full table-auto border-separate border-spacing-y-2 border-spacing-x-4 -mx-4">
+    <tbody>
+        {% assign works = site.data.resume.employment-history | where: "highlight", "true"%}
+        {% for work in works %}
+            <tr>
+                <td class="w-48 align-top">{{ work.start-date | date: "%b %Y" }} to {% if work.end-date %}{{ work.end-date | date: "%b %Y" }}{% else %}Present{% endif %}</td>
+                <td>
+                    <p><b>{{ work.position }}</b></p>
+                    <p>{{ work.company }} - {{ work.location }}</p>
+                    <ul class="mt-2">
+                        {% for project in work.projects %}
+                            <li class="border-l-4 pl-4">
+                                <p><b>{{ project.name }}</b></p>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        {% assign old-works = site.data.resume.employment-history | where: "highlight", "false"%}
+        {% for work in old-works %}
+            <tr>
+                <td class="w-48 align-top">
+                    <p>{{ work.start-date | date: "%b %Y" }} to {% if work.end-date %}{{ work.end-date | date: "%b %Y" }}{% else %}Present{% endif %}</p>
+                </td>
+                <td>
+                    <p><b>{{ work.position }}</b>, {{ work.company }}</p>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
-        <h2 class="text-2xl mt-10 leading-tight"><b>Trainings/Seminars</b></h2>
+<h2 class="text-2xl mt-6 leading-tight"><b>Core Competencies</b></h2>
+<table class="mt-3 w-full table-auto border-separate border-spacing-y-2 border-spacing-x-4 -mx-4">
+    <tbody>
+        {% for competency in site.data.resume.personal-information.core-competencies %}
+            <tr>
+                <td class="w-48">
+                    <p><b>{{ competency.name }}</b></p>
+                </td>
+                <td>
+                    <p>{% for skill in competency.skills %}{{ skill }}<span class="last-of-type:hidden">,</span> {% endfor %}</p>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2 class="text-2xl mt-6 leading-tight"><b>Trainings/Seminars</b></h2>
+<table class="mt-3 w-full table-auto border-separate border-spacing-y-2 border-spacing-x-4 -mx-4">
+    <tbody>
         {% for workshop in site.data.resume.trainings-and-seminars %}
-            <h3 class="mt-4 leading-tight"><b>{{ workshop.title }}</b>, {{ workshop.organizer }}</h3>
-            <p>{{ workshop.location }}</p>
-            <p>{{ workshop.date }}</p>
+            <tr>
+                <td class="w-32">
+                    <p>{{ workshop.date | date: "%b %Y" }}</p>
+                </td>
+                <td>
+                    <p><b>{{ workshop.title }}</b>, {{ workshop.organizer }} - {{ workshop.location }}</p>
+                </td>
+            </tr>
         {% endfor %}
+    </tbody>
+</table>
 
-        <!-- <h2 class="text-2xl mt-10 leading-tight"><b>Awards &amp; Recognition</b></h2>
-        {% for award in site.data.resume.awards-and-recognition %}
-            <h3 class="mt-4 leading-tight"><b>{{ award.name }}</b></h3>
-            <p>{{ award.description }}</p>
-            <p>{{ award.institution }}</p>
-            <p>{{ award.date }}</p>
-        {% endfor %} -->
+<!-- <h2 class="text-2xl mt-6 leading-tight"><b>Awards &amp; Recognition</b></h2>
+{% for award in site.data.resume.awards-and-recognition %}
+    <h3 class="mt-3 leading-tight"><b>{{ award.name }}</b></h3>
+    <p>{{ award.description }}</p>
+    <p>{{ award.institution }}</p>
+    <p>{{ award.date }}</p>
+{% endfor %} -->
 
-        <!-- <h2 class="text-2xl mt-10 leading-tight"><b>Reference</b></h2>
-        {% for reference in site.data.resume.references %}
-            <h3 class="mt-4 leading-tight"><b>{{ reference.name }}</b>, {{ reference.position }}</b></h3>
-            <p>{{ reference.company }}</p>
-            <p>{{ reference.department }}</p>
-            {% if reference.mobile %}
-                <a href="tel:{{ reference.mobile }}">{{ reference.mobile }}</a><br>
-            {% endif %}
-            {% if reference.email %}
-                <a href="mailto:{{ reference.email }}">{{ reference.email }}</a>
-            {% endif %}
-            {% if reference.linkedin %}
-                <a href="{{ reference.linkedin }}">View on LinkedIn</a><br>
-            {% endif %}
-        {% endfor %}
-        -->
+<!-- <h2 class="text-2xl mt-6 leading-tight"><b>Reference</b></h2>
+{% for reference in site.data.resume.references %}
+    <h3 class="mt-3 leading-tight"><b>{{ reference.name }}</b>, {{ reference.position }}</b></h3>
+    <p>{{ reference.company }}</p>
+    <p>{{ reference.department }}</p>
+    {% if reference.mobile %}
+        <a href="tel:{{ reference.mobile }}">{{ reference.mobile }}</a><br>
+    {% endif %}
+    {% if reference.email %}
+        <a href="mailto:{{ reference.email }}">{{ reference.email }}</a>
+    {% endif %}
+    {% if reference.linkedin %}
+        <a href="{{ reference.linkedin }}">View on LinkedIn</a><br>
+    {% endif %}
+{% endfor %} -->
 
-    </div>
+<h2 class="text-2xl mt-6 leading-tight"><b>Education</b></h2>
 
-    <div class="col-span-8">
-
-        <h2 class="text-2xl mt-10 leading-tight"><b>Professional Experience</b></h2>
-        {% for task in site.data.resume.professional-experience %}
-            <h3 class="mt-4 leading-tight"><b>{{ task.name }}</b></h3>
-            {% if task.descriptions %}
-                <ul class="mt-2 list-disc pl-4">
-                    {% for desciption in task.descriptions %}
-                        <li>{{ desciption }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        {% endfor %}
-
-        <h2 class="text-2xl mt-10 leading-tight"><b>Work Experiences</b></h2>
-        {% for work in site.data.resume.employment-history %}
-            <h3 class="mt-4 leading-tight"><b>{{ work.position }}</b>, {{ work.company }} - {{ work.location }}</h3>
-            <!-- <p></p> -->
-            <p><i>{{ work.start-date | date: "%B %d, %Y" }} to {% if work.end-date %}{{ work.end-date | date: "%B %d, %Y" }}{% else %}Present{% endif %}</i></p>
-            <!-- {% if work.descriptions %}
-                <ul class="mt-2 list-disc pl-4">
-                    {% for desciption in work.descriptions %}
-                        <li>{{ desciption }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %} -->
-            {% if work.projects %}
-                <ul class="mt-2 list-disc pl-4">
-                    {% for project in work.projects %}
-                        <li>{{ project.name }} {{ project.description }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        {% endfor %}
-
-        <h2 class="text-2xl mt-10 leading-tight"><b>Education</b></h2>
+<table class="mt-3 w-full table-auto border-separate border-spacing-y-2 border-spacing-x-4 -mx-4">
+    <tbody>
         {% for education in site.data.resume.educations %}
-            <h3 class="mt-4 leading-tight"><b>{{ education.degree }}</b></h3>
-            <p>{{ education.institution }}</p>
-            <ul class="mt-2 list-disc pl-4">
-                {% for award in education.awards %}
-                    <li><b>{{ award.name }}</b>, {{ award.description }}</li>
-                {% endfor %}
-            </ul>
-            <!-- <p>{{ education.start-date }} {% if education.start-date %}-{% endif %} {{ education.end-date }}</p> -->
+            <tr>
+                <td class="w-32 align-top">
+                    <p>{{ education.start-date }} {% if education.start-date %}-{% endif %} {{ education.end-date }}</p>
+                </td>
+                <td>
+                    <p><b>{{ education.degree }}</b>, {{ education.institution }}</p>
+                    <ul class="mt-2">
+                        {% for award in education.awards %}
+                            <li class="border-l-4 pl-4">
+                                <p><b>{{ award.name }}</b></p>
+                                <p>{{ award.description }}</p>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
         {% endfor %}
+    </tbody>
+</table>
 
-    </div>
-
+<div class="hidden print:block mt-48">
+    <p>I hereby certify that all information stated herewith are true and correct to the best of my knowledge and beliefs.</p>
+    <h3 class="mt-10 leading-tight"><b>{{ site.data.resume.personal-information.name | upcase }}</b></h3>
+    <p>{{ site.data.resume.personal-information.title }}</p>
+    <ul class="mt-2">
+        {% for contact-details in site.data.resume.personal-information.contact-details %}
+            <li><b>{{ contact-details.name }}</b>: {{ contact-details.value }}</li>
+        {% endfor %}
+    </ul>
 </div>
-
-
-
-<p>I hereby certify that all information stated herewith are true and correct to the best of my knowledge and beliefs.</p>
-
-<h3 class="mt-4 leading-tight"><b>{{ site.data.resume.personal-information.name | upcase }}</b></h3>
-<p>{{ site.data.resume.personal-information.title }}</p>
-<ul class="mt-2">
-    {% for contact-details in site.data.resume.personal-information.contact-details %}
-        <li><b>{{ contact-details.name }}</b>: {{ contact-details.value }}</li>
-    {% endfor %}
-</ul>

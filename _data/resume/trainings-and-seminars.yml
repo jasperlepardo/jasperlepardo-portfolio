@@ -18,10 +18,10 @@
   location: Hive Hotel, Quezon City, PH
   date: October 23, 2016
 
-- title: Form Function Class 7
-  organizer: PWDO
-  location: Hive Hotel, Quezon City, PH
-  date: October 22, 2016
+# - title: Form Function Class 7
+#   organizer: PWDO
+#   location: Hive Hotel, Quezon City, PH
+#   date: October 22, 2016
 
 - title: UX Design and Validating Your Startup
   organizer: Melewi
@@ -38,12 +38,12 @@
   location: Hive Hotel, Quezon City, PH
   date: November 15, 2015
 
-- title: Form Function Class 6
-  organizer: PWDO
-  location: Hive Hotel, Quezon City, PH
-  date: November 14, 2015
+# - title: Form Function Class 6
+#   organizer: PWDO
+#   location: Hive Hotel, Quezon City, PH
+#   date: November 14, 2015
 
-- title: Web Design Workshop
-  organizer: PWDO
-  location: Globe Labs, Makati City, PH
-  date: August 29, 2015
+# - title: Web Design Workshop
+#   organizer: PWDO
+#   location: Globe Labs, Makati City, PH
+#   date: August 29, 2015

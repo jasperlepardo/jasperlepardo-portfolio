@@ -34,17 +34,11 @@
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
-    --text-xxs: 0.625rem;
-    --text-xs: 0.75rem;
-    --text-sm: 0.875rem;
-    --text-base: 1rem;
     --text-lg: 1.125rem;
     --text-xl: 1.25rem;
     --text-2xl: 1.5rem;
     --text-3xl: 2rem;
-    --text-4xl: 2.25rem;
     --text-5xl: 2.5rem;
-    --text-6xl: 3rem;
     --text-7xl: 4rem;
   }
 }
@@ -197,17 +191,8 @@
   .col-span-2 {
     grid-column: span 2 / span 2;
   }
-  .col-span-4 {
-    grid-column: span 4 / span 4;
-  }
-  .col-span-8 {
-    grid-column: span 8 / span 8;
-  }
   .col-span-12 {
     grid-column: span 12 / span 12;
-  }
-  .col-start-5 {
-    grid-column-start: 5;
   }
   .container {
     width: 100%;
@@ -227,14 +212,17 @@
       max-width: 96rem;
     }
   }
-  .m-auto {
-    margin: auto;
+  .-mx-4 {
+    margin-inline: calc(var(--spacing) * -4);
   }
   .mx-auto {
     margin-inline: auto;
   }
   .mt-2 {
     margin-top: calc(var(--spacing) * 2);
+  }
+  .mt-3 {
+    margin-top: calc(var(--spacing) * 3);
   }
   .mt-4 {
     margin-top: calc(var(--spacing) * 4);
@@ -257,8 +245,14 @@
   .mt-24 {
     margin-top: calc(var(--spacing) * 24);
   }
+  .mt-36 {
+    margin-top: calc(var(--spacing) * 36);
+  }
   .mt-40 {
     margin-top: calc(var(--spacing) * 40);
+  }
+  .mt-48 {
+    margin-top: calc(var(--spacing) * 48);
   }
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
@@ -281,6 +275,9 @@
   .grid {
     display: grid;
   }
+  .hidden {
+    display: none;
+  }
   .inline-block {
     display: inline-block;
   }
@@ -290,8 +287,38 @@
   .h-auto {
     height: auto;
   }
-  .max-h-60 {
-    max-height: calc(var(--spacing) * 60);
+  .max-h-40 {
+    max-height: calc(var(--spacing) * 40);
+  }
+  .max-h-48 {
+    max-height: calc(var(--spacing) * 48);
+  }
+  .w-24 {
+    width: calc(var(--spacing) * 24);
+  }
+  .w-28 {
+    width: calc(var(--spacing) * 28);
+  }
+  .w-32 {
+    width: calc(var(--spacing) * 32);
+  }
+  .w-40 {
+    width: calc(var(--spacing) * 40);
+  }
+  .w-48 {
+    width: calc(var(--spacing) * 48);
+  }
+  .w-49 {
+    width: calc(var(--spacing) * 49);
+  }
+  .w-60 {
+    width: calc(var(--spacing) * 60);
+  }
+  .w-auto {
+    width: auto;
+  }
+  .w-full {
+    width: 100%;
   }
   .max-w-4xl {
     max-width: var(--container-4xl);
@@ -302,8 +329,22 @@
   .max-w-80 {
     max-width: calc(var(--spacing) * 80);
   }
+  .table-auto {
+    table-layout: auto;
+  }
   .border-collapse {
     border-collapse: collapse;
+  }
+  .border-separate {
+    border-collapse: separate;
+  }
+  .border-spacing-x-4 {
+    --tw-border-spacing-x: calc(var(--spacing) * 4);
+    border-spacing: var(--tw-border-spacing-x) var(--tw-border-spacing-y);
+  }
+  .border-spacing-y-2 {
+    --tw-border-spacing-y: calc(var(--spacing) * 2);
+    border-spacing: var(--tw-border-spacing-x) var(--tw-border-spacing-y);
   }
   .resize {
     resize: both;
@@ -408,6 +449,12 @@
   }
   .pl-8 {
     padding-left: calc(var(--spacing) * 8);
+  }
+  .text-right {
+    text-align: right;
+  }
+  .align-top {
+    vertical-align: top;
   }
   .text-2xl {
     font-size: var(--text-2xl);
@@ -594,6 +641,11 @@
       color: var(--color-zinc-400);
     }
   }
+  .print\:block {
+    @media print {
+      display: block;
+    }
+  }
   .print\:hidden {
     @media print {
       display: none;
@@ -623,6 +675,16 @@
   font-weight: 700;
   font-style: normal;
 }
+@property --tw-border-spacing-x {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-border-spacing-y {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0;
+}
 @property --tw-border-style {
   syntax: "*";
   inherits: false;
@@ -644,6 +706,8 @@
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
+      --tw-border-spacing-x: 0;
+      --tw-border-spacing-y: 0;
       --tw-border-style: solid;
       --tw-leading: initial;
       --tw-font-weight: initial;

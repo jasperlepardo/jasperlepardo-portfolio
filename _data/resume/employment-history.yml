@@ -23,6 +23,7 @@
 #     description: Appointment Management System for Small Business
 #   - name: Tiaxa
 #     description: Hotel Analytics tool
+#   highlight: false
 
 - position: Senior UI/UX Designer
   company: Oncore Services (Microsourcing)
@@ -39,6 +40,11 @@
   - Present and defend designs and key milestone deliverable to peers and executive level stakeholders;
   - Conduct user research and evaluate user feedback;
   - Establish and promote design guidelines, best practices and standards.
+  projects:
+  - name: Contractor & Contingent Workforce Management
+    description:
+  highlight: true
+
 - position: Senior UI/UX Designer
   company: CloudEats
   employee-type: Full-time
@@ -61,6 +67,7 @@
     description: 
   - name: Kitchen Display System 
     description: 
+  highlight: true
 
 - position: UI/UX Designer
   company: ShiftCare Pty Ltd
@@ -82,6 +89,7 @@
     description: 
   - name: Support Worker Mobile App
     description: 
+  highlight: true
 
 # - position: UI/UX Design Consultant
 #   company: Kwik.Insure
@@ -91,6 +99,7 @@
 #   start-date: October 5, 2020
 #   end-date: March 15, 2022
 #   descriptions: 
+#   highlight: false
 
 - position: Usability Engineer II
   company: Samsung Research Philippines
@@ -111,6 +120,7 @@
     description: 
   - name: Mobile Payment System
     description: 
+  highlight: true
 
 - position: Svc Info Developer III
   company: DXC Technology
@@ -127,6 +137,8 @@
   - Leads other designers to develop holistic, high-quality user experience solutions for moderate to complex projects, products, and services
   - Represents the user experience design team for all phases of larger and more-complex development and design projects and programs
   - Provides guidance and mentoring to less-experienced staff members
+  highlight: false
+
 
 - position: Senior UI/UX Designer
   company: EmployeeConnect (TechnologyElite)
@@ -142,6 +154,7 @@
   - Create personas/profiles, wireframes, storyboards, user flows, process flows, and site maps to effectively communicate interaction and design ideas
   - Translate required UX to the best UI practices
   - Analyze and troubleshoot UI/UX problems (e.g. responsiveness) and create on-brand design solutions that meet business goals and requirements
+  highlight: false
 
 - position: UI Designer &amp; Front-End Developer
   company: Sprout Solutions
@@ -159,6 +172,7 @@
   - Create quality mockups and prototypes
   - Help back-end developers with coding and troubleshooting
   - Ensure high quality graphic standards and brand consistency
+  highlight: false
 
 - position: User Interface Designer
   company: Trend Micro Philippines
@@ -179,11 +193,7 @@
   - As one of the leading anti-virus company, serving 30% of the enterprise market worldwide, giving the best customer support is key to the their success.
   - In my almost 2 years stint, I was a key person tasked in modernizing its legacy Enterprise Support Portal into a more user-friendly and mobile-responsive web application. Our goal is to give our customers an intuitive way of accessing Trend Micro's support services by enabling them to quickly file for a support ticket through the portal. We've streamlined other business processes by integrating them into the portal and automated other routinic task. This enables faster case resolutions which freed up valuable man-hours that can be refocused to a more impactful task.
   - During it's development, I noticed a gap between the design team and the development team. To solve this, I've translated the company's design guidelines into a web-based living design system. This established a common language for both teams and enables the designers to design/prototype directly into the web. It also ensured that the design specifications will be strictly followed without the need to create a separate design documents, which ultimately cuts the designer-developer handoff time into half.
-  projects:
-  - name: Business Support Portal
-    url: https://success.trendmicro.com
-  - name: Trend Micro | Design System
-    url: 
+  highlight: false
 
 - position: Web Developer
   company: TaskUs
@@ -197,6 +207,7 @@
   - Handles programming of web projects
   - Works closely with the E-learning Specialist for various projects
   - Helps the group conceptualize new programs for the learning portal
+  highlight: false
 
 - position: Graphic Designer
   company: Sports Bookie Online
@@ -210,3 +221,4 @@
   - Responsible in creating, illustrations, logo, brochure and graphics for web
   - Pages, signage and many other form of visual communications
   - Keeping abreast of developments in IT, particularly design programs
+  highlight: false
