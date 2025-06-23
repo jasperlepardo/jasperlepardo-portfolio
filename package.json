@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:css": "npx @tailwindcss/cli -i ./assets/css/tailwind.css -o ./assets/css/main.css --minify",
     "watch:css": "npx @tailwindcss/cli -i ./assets/css/tailwind.css -o ./assets/css/main.css --minify --watch",
-    "serve": "bundle exec jekyll serve --baseurl '' --livereload --watch",
+    "serve": "bundle exec jekyll serve --baseurl '' --host 0.0.0.0 --livereload --watch",
     "tailwind": "npm-run-all --parallel watch:css serve"
   },
   "keywords": [],

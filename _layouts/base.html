@@ -11,7 +11,9 @@
 
     {% if site.google-font %}
       <!-- Google Font -->
-      <link href="{{ site.custom-font }}" rel="stylesheet">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="{{ site.google-font }}" rel="stylesheet">
     {% endif %}
 
     {% if site.fontawesome %}
@@ -38,7 +40,7 @@
     
   </head>
   
-  <body class="bg-zinc-100 dark:bg-zinc-950 text-zinc-950 dark:text-zinc-50">
+  <body class="bg-zinc-100 dark:bg-zinc-950 text-zinc-950 dark:text-zinc-50 leading-normal">
     {{ content }}
   </body>
 
@@ -54,15 +56,15 @@
 
   <!--Start of Tawk.to Script-->
   <script type="text/javascript">
-  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-  (function(){
-  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-  s1.async=true;
-  s1.src='https://embed.tawk.to/684c7f8c4aea20190b6343b5/1itld4ffk';
-  s1.charset='UTF-8';
-  s1.setAttribute('crossorigin','*');
-  s0.parentNode.insertBefore(s1,s0);
-  })();
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+      s1.async=true;
+      s1.src='https://embed.tawk.to/684c7f8c4aea20190b6343b5/1itld4ffk';
+      s1.charset='UTF-8';
+      s1.setAttribute('crossorigin','*');
+      s0.parentNode.insertBefore(s1,s0);
+    })();
   </script>
   <!--End of Tawk.to Script-->  
 

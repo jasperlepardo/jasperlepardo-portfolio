@@ -6,21 +6,7 @@
 
 @theme {
 
-  --text-*: initial;
-  --text-xxs: 0.625rem;
-  --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
-  --text-base: 1rem;
-  --text-lg: 1.125rem;
-  --text-xl: 1.25rem;
-  --text-2xl: 1.5rem;
-  --text-3xl: 2rem;
-  --text-4xl: 2.25rem;
-  --text-5xl: 2.5rem;
-  --text-6xl: 3rem;
-  --text-7xl: 4rem;
-
-  --font-sans: GT-Walsheim-Pro, sans-serif;
+  --font-sans: 'Manrope', 'sans-serif';
 }
 
 /*
@@ -39,9 +25,59 @@
   ::file-selector-button {
     border-color: var(--color-gray-200, currentcolor);
   }
+
+  h1, .h1,
+  h2, .h2,
+  h3, .h3,
+  h4, .h4,
+  h5, .h5,
+  h6, .h6 {
+    @apply leading-snug
+  }
+
+  .display-1 {
+    @apply text-7xl lg:text-9xl
+  }
+
+  .display-2 {
+    @apply text-6xl lg:text-8xl
+  }
+
+  .display-3 {
+    @apply text-5xl lg:text-7xl
+  }
+
+  .display-4 {
+    @apply text-4xl lg:text-6xl
+  }
+
+  h1, .h1 {
+    @apply text-3xl lg:text-5xl
+  }
+
+  h2, .h2 {
+    @apply text-2xl lg:text-4xl
+  }
+
+  h3, .h3 {
+    @apply text-xl lg:text-3xl
+  }
+
+  h4, .h4 {
+    @apply text-lg lg:text-2xl
+  }
+
+  h5, .h5 {
+    @apply text-base font-bold
+  }
+
+  p.lead {
+    @apply text-xl lg:text-2xl leading-loose
+  }
+
 }
 
-@font-face {
+/* @font-face {
     font-family: "GT-Walsheim-Pro";
     src: url('/assets/fonts/GT_Walsheim_Pro/GT-Walsheim-Pro-Light.eot'),
         url('/assets/fonts/GT_Walsheim_Pro/GT-Walsheim-Pro-Light.woff') format("woff"),
@@ -66,4 +102,4 @@
         url('/assets/fonts/GT_Walsheim_Pro/GT-Walsheim-Pro-Bold.ttf') format("truetype");
     font-weight: 700;
     font-style: normal;
-}
+} */

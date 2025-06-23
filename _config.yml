@@ -1,6 +1,9 @@
-url: "https://www.jasperlepardo.com" # the base hostname & protocol for your site, e.g. http://example.com
-baseurl: "" # the subpath of your site, e.g. /blog
-title: "" # the name of your site, e.g. ACME Corp.
+url: 'https://www.jasperlepardo.com' # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: '' # the subpath of your site, e.g. /blog
+title: "Jasper Lepardo | I'm a Designer" # the name of your site, e.g. ACME Corp.
+description: I'm a Designer based in the Philippines. I love to solve design problems and isn't afraid to code.
+
+google-font: 'https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap'
 
 collections:
   works:

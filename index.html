@@ -5,43 +5,40 @@ custom-stylesheet:
 transition: 
 ---
 
-<section class="mt-24">
-  <div class="grid grid-cols-12 gap-6">
-    <div class="lg:col-start-10 lg:col-span-3 col-span-12 lg:order-2">
-      <img class="object-cover object-top lg:w-full lg:max-w-full max-w-80 h-auto rounded-full" src="{{ '/assets/img/profile-picture.webp' | relative_url }}" alt="">
+<section class="mt-8 lg:mt-24">
+  <div class="flex flex-col lg:flex-row gap-10 lg:gap-20">
+    <div class="lg:order-2">
+      <img class="object-cover object-top max-w-32 lg:max-w-96 h-auto rounded-full" src="{{ '/assets/img/profile-picture.webp' | relative_url }}" alt="">
     </div>
-    <div class="lg:col-span-8 col-span-12 lg:order-1">
-      <h1 class="text-5xl mb-12 leading-tight">I’m Jasper — a Filipino Product Designer who turns complex ideas into simple, usable SaaS products. I craft intuitive, scalable applications with clean UI, thoughtful UX, and developer-friendly design systems.</h1>
-      <a class="text-lg py-5 px-8 inline-block bg-zinc-50 text-zinc-700 rounded-full leading-6" href="{{ '/my-calendar.html' | relative_url }}">Get in Touch</a>
-      <p class="text-lg py-5 px-8 inline-block ml-6 text-emerald-600 rounded-full leading-6"><span class="text-emerald-400 text-2xl leading-6">●</span> Open to New Opportunities</p>
+    <div class="lg:order-1">
+      <h1 class="mb-8">Hi, I’m Jasper – Filipino Product Designer who turns complex ideas into simple, usable SaaS products. I craft intuitive, scalable applications with clean UI, thoughtful UX, and developer-friendly design systems.</h1>
+      <a class="lg:text-2xl py-5 px-8 inline-block bg-blue-500 text-blue-50 rounded-full font-medium" href="{{ '/my-calendar.html' | relative_url }}">Let's Talk</a>
+      <!-- <p class="text-lg py-5 px-8 inline-block ml-6 text-emerald-600 rounded-full leading-6"><span class="text-emerald-400 text-2xl leading-6">●</span> Open to New Opportunities</p> -->
     </div>
   </div>
 </section>
 
-<section class="mt-24">
+<section class="mt-12 lg:mt-24">
   <!-- <div class="pb-12">
     <h2 class="text-7xl font-bold text-zinc-950 dark:text-zinc-50">My Works.</h2>
   </div> -->
   {% assign works = site.works | where: "categories", "featured"%}
-  <div class="grid gap-6">
+  <div class="grid gap-4 lg:gap-6">
     {% for work in works %}
-      <a class="bg-zinc-100 dark:bg-zinc-900 overflow-hidden rounded-2xl order-{{ work.order }}" id="{{ work.name }}" href="{{ work.external-url | default: work.url | relative_url }}">
+      <a class="bg-white dark:bg-zinc-900 overflow-hidden rounded-lg lg:rounded-2xl order-{{ work.order }}" id="{{ work.name }}" href="{{ work.external-url | default: work.url | relative_url }}">
         <div class="grid grid-cols-2">
-          <div class="lg:col-span-1 col-span-2 lg:order-2 bg-#{{ work.bgColor }}">
+          <div class="lg:col-span-1 col-span-2 lg:order-2">
             {% assign slug = work.title | downcase | replace: ' ', '-' %}
-            <img
-              src="{{ '/assets/img/' | append: slug | append: '.png' | relative_url }}"
-              alt="{{ work.title }}"
-            />
+            <img src="{{ '/assets/img/' | append: slug | append: '.png' | relative_url }}" alt="{{ work.title }}"/>
           </div>
-          <div class="lg:col-span-1 col-span-2 flex flex-col gap-6 xl:p-14 lg:p-12 md:p-10 sm:p-8 p-6">
-            <ul>
+          <div class="lg:col-span-1 col-span-2 flex flex-col xl:p-14 lg:p-12 md:p-10 sm:p-8 p-6">
+            <ul class="mb-10">
               {% for tag in work.tags %}
-                <li class="inline-block text-zinc-500">{{ tag }}</li> <span class="text-zinc-500 last-of-type:hidden">&#8226</span>
+                <li class="inline-block text-zinc-500">{{ tag }}</li> <span class="text-zinc-500 last-of-type:hidden">&#8226;</span>
               {% endfor %}
             </ul>
-            <h3 class="text-5xl leading-tight font-bold  mb-2 text-zinc-800 dark:text-zinc-200">{{ work.title }}</h3>
-            <p class="text-xl text-zinc-600 dark:text-zinc-400">{{ work.description }}</p>
+            <h3 class="mb-4 text-zinc-800 dark:text-zinc-200">{{ work.title }}</h3>
+            <p class="lg:text-xl text-zinc-600 dark:text-zinc-400">{{ work.description }}</p>
           </div>
         </div>
       </a>

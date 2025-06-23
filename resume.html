@@ -1,120 +1,134 @@
 ---
 layout: default
 layout-type: container
-custom-stylesheet: 
-transition: 
+custom-stylesheet:
+transition:
 ---
 
-<div class="flex gap-10 grid-flow-row">
-    <img class="max-h-48 w-auto rounded-full" src="{{ '/assets/img/profile-picture.webp' | relative_url}}" alt="" />
-    <div class="content-center w-full">
-        <h1 class="text-5xl leading-tight"><b>{{ site.data.resume.personal-information.name }}</b></h1>
-        <p class="text-2xl">{{ site.data.resume.personal-information.title }}</p>
-        <table class="mt-3 w-full table-auto border-separate border-spacing-y-2 border-spacing-x-4 -mx-4">
-            <tbody>
-                <tr>
-                    <td>
-                        <p><b>Mobile Number</b>: {{ site.data.resume.personal-information.mobile-number }}</p>
-                    </td>
-                    <td>
-                        <p><b>Home Address</b>: {{ site.data.resume.personal-information.home-address }}</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p><b>Email Address</b>: {{ site.data.resume.personal-information.email-address }}</p>
-                    </td>
-                    <td>
-                        <p><b>Portfolio</b>: {{ site.data.resume.personal-information.website }}</p>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+<div class="flex grid-flow-row gap-10">
+  <img class="max-h-48 w-auto rounded-full" src="{{ '/assets/img/profile-picture.webp' | relative_url}}" alt=""/>
+  <div class="w-full content-center">
+    <h1><b>{{ site.data.resume.personal-information.name }}</b></h1>
+    <p class="lead">{{ site.data.resume.personal-information.title }}</p>
+    <table class="-mx-4 mt-3 w-full table-auto border-separate border-spacing-x-4 border-spacing-y-2">
+      <tbody>
+        <tr>
+          <td>
+            <p><b>Mobile Number</b>: {{ site.data.resume.personal-information.mobile-number }}</p>
+          </td>
+          <td>
+            <p><b>Home Address</b>: {{ site.data.resume.personal-information.home-address }}</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p><b>Email Address</b>: {{ site.data.resume.personal-information.email-address }}</p>
+          </td>
+          <td>
+            <p><b>Portfolio</b>: <a href="{{ site.data.resume.personal-information.website }}">{{ site.data.resume.personal-information.website }}</a></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
-<h2 class="text-2xl mt-6 leading-tight"><b>About</b></h2>
-<p class="mt-3 ">{{ site.data.resume.personal-information.summary }}</p>
+<h3 class="mt-6"><b>About</b></h3>
+<p class="mt-3">{{ site.data.resume.personal-information.summary }}</p>
 
-<h2 class="text-2xl mt-6 leading-tight"><b>Professional Experience</b></h2>
+<h3 class="mt-6"><b>Professional Experience</b></h3>
 {% for task in site.data.resume.professional-experience %}
-    <h3 class="mt-3 leading-tight"><b>{{ task.name }}</b></h3>
-    {% if task.descriptions %}
-        <ul class="mt-2 list-disc pl-4">
-            {% for desciption in task.descriptions %}
-                <li>{{ desciption }}</li>
-            {% endfor %}
+<p class="mt-3"><b>{{ task.name }}</b></p>
+{% if task.descriptions %}
+<ul class="mt-2 list-disc pl-4">
+  {% for desciption in task.descriptions %}
+  <li>{{ desciption }}</li>
+  {% endfor %}
+</ul>
+{% endif %} {% endfor %}
+
+<h3 class="mt-6"><b>Work Experiences</b></h3>
+<table class="-mx-4 mt-3 w-full table-auto border-separate border-spacing-x-4 border-spacing-y-2">
+  <tbody>
+    {% assign works = site.data.resume.employment-history | where: "highlight", "true"%} {% for work
+    in works %}
+    <tr>
+      <td class="w-48 align-top">
+        {{ work.start-date | date: "%b %Y" }} to {% if work.end-date %}{{ work.end-date | date: "%b
+        %Y" }}{% else %}Present{% endif %}
+      </td>
+      <td>
+        <p><b>{{ work.position }}</b></p>
+        <p>{{ work.company }} - {{ work.location }}</p>
+        <ul class="mt-2">
+          {% for project in work.projects %}
+          <li class="border-l-4 pl-4">
+            <p><b>{{ project.name }}</b></p>
+          </li>
+          {% endfor %}
         </ul>
-    {% endif %}
-{% endfor %}
-
-<h2 class="text-2xl mt-6 leading-tight"><b>Work Experiences</b></h2>
-<table class="mt-3 w-full table-auto border-separate border-spacing-y-2 border-spacing-x-4 -mx-4">
-    <tbody>
-        {% assign works = site.data.resume.employment-history | where: "highlight", "true"%}
-        {% for work in works %}
-            <tr>
-                <td class="w-48 align-top">{{ work.start-date | date: "%b %Y" }} to {% if work.end-date %}{{ work.end-date | date: "%b %Y" }}{% else %}Present{% endif %}</td>
-                <td>
-                    <p><b>{{ work.position }}</b></p>
-                    <p>{{ work.company }} - {{ work.location }}</p>
-                    <ul class="mt-2">
-                        {% for project in work.projects %}
-                            <li class="border-l-4 pl-4">
-                                <p><b>{{ project.name }}</b></p>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        {% assign old-works = site.data.resume.employment-history | where: "highlight", "false"%}
-        {% for work in old-works %}
-            <tr>
-                <td class="w-48 align-top">
-                    <p>{{ work.start-date | date: "%b %Y" }} to {% if work.end-date %}{{ work.end-date | date: "%b %Y" }}{% else %}Present{% endif %}</p>
-                </td>
-                <td>
-                    <p><b>{{ work.position }}</b>, {{ work.company }}</p>
-                </td>
-            </tr>
-        {% endfor %}
-    </tbody>
+      </td>
+    </tr>
+    {% endfor %} {% assign old-works = site.data.resume.employment-history | where: "highlight",
+    "false"%} {% for work in old-works %}
+    <tr>
+      <td class="w-48 align-top">
+        <p>
+          {{ work.start-date | date: "%b %Y" }} to {% if work.end-date %}{{ work.end-date | date:
+          "%b %Y" }}{% else %}Present{% endif %}
+        </p>
+      </td>
+      <td>
+        <p>
+          <b>{{ work.position }}</b>
+          , {{ work.company }}
+        </p>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
 </table>
 
-<h2 class="text-2xl mt-6 leading-tight"><b>Core Competencies</b></h2>
-<table class="mt-3 w-full table-auto border-separate border-spacing-y-2 border-spacing-x-4 -mx-4">
-    <tbody>
-        {% for competency in site.data.resume.personal-information.core-competencies %}
-            <tr>
-                <td class="w-48">
-                    <p><b>{{ competency.name }}</b></p>
-                </td>
-                <td>
-                    <p>{% for skill in competency.skills %}{{ skill }}<span class="last-of-type:hidden">,</span> {% endfor %}</p>
-                </td>
-            </tr>
-        {% endfor %}
-    </tbody>
+<h3 class="mt-6"><b>Core Competencies</b></h3>
+<table class="-mx-4 mt-3 w-full table-auto border-separate border-spacing-x-4 border-spacing-y-2">
+  <tbody>
+    {% for competency in site.data.resume.personal-information.core-competencies %}
+    <tr>
+      <td class="w-48">
+        <p><b>{{ competency.name }}</b></p>
+      </td>
+      <td>
+        <p>
+          {% for skill in competency.skills %}{{ skill }}
+          <span class="last-of-type:hidden">,</span>
+          {% endfor %}
+        </p>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
 </table>
 
-<h2 class="text-2xl mt-6 leading-tight"><b>Trainings/Seminars</b></h2>
-<table class="mt-3 w-full table-auto border-separate border-spacing-y-2 border-spacing-x-4 -mx-4">
-    <tbody>
-        {% for workshop in site.data.resume.trainings-and-seminars %}
-            <tr>
-                <td class="w-32">
-                    <p>{{ workshop.date | date: "%b %Y" }}</p>
-                </td>
-                <td>
-                    <p><b>{{ workshop.title }}</b>, {{ workshop.organizer }} - {{ workshop.location }}</p>
-                </td>
-            </tr>
-        {% endfor %}
-    </tbody>
+<h3 class="mt-6"><b>Trainings/Seminars</b></h3>
+<table class="-mx-4 mt-3 w-full table-auto border-separate border-spacing-x-4 border-spacing-y-2">
+  <tbody>
+    {% for workshop in site.data.resume.trainings-and-seminars %}
+    <tr>
+      <td class="w-32">
+        <p>{{ workshop.date | date: "%b %Y" }}</p>
+      </td>
+      <td>
+        <p>
+          <b>{{ workshop.title }}</b>
+          , {{ workshop.organizer }} - {{ workshop.location }}
+        </p>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
 </table>
 
-<!-- <h2 class="text-2xl mt-6 leading-tight"><b>Awards &amp; Recognition</b></h2>
+<!-- <h3 class="text-2xl mt-6 leading-tight"><b>Awards &amp; Recognition</b></h3>
 {% for award in site.data.resume.awards-and-recognition %}
     <h3 class="mt-3 leading-tight"><b>{{ award.name }}</b></h3>
     <p>{{ award.description }}</p>
@@ -122,7 +136,7 @@ transition:
     <p>{{ award.date }}</p>
 {% endfor %} -->
 
-<!-- <h2 class="text-2xl mt-6 leading-tight"><b>Reference</b></h2>
+<!-- <h3 class="text-2xl mt-6 leading-tight"><b>Reference</b></h3>
 {% for reference in site.data.resume.references %}
     <h3 class="mt-3 leading-tight"><b>{{ reference.name }}</b>, {{ reference.position }}</b></h3>
     <p>{{ reference.company }}</p>
@@ -138,38 +152,48 @@ transition:
     {% endif %}
 {% endfor %} -->
 
-<h2 class="text-2xl mt-6 leading-tight"><b>Education</b></h2>
+<h3 class="mt-6"><b>Education</b></h3>
 
-<table class="mt-3 w-full table-auto border-separate border-spacing-y-2 border-spacing-x-4 -mx-4">
-    <tbody>
-        {% for education in site.data.resume.educations %}
-            <tr>
-                <td class="w-32 align-top">
-                    <p>{{ education.start-date }} {% if education.start-date %}-{% endif %} {{ education.end-date }}</p>
-                </td>
-                <td>
-                    <p><b>{{ education.degree }}</b>, {{ education.institution }}</p>
-                    <ul class="mt-2">
-                        {% for award in education.awards %}
-                            <li class="border-l-4 pl-4">
-                                <p><b>{{ award.name }}</b></p>
-                                <p>{{ award.description }}</p>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-    </tbody>
+<table class="-mx-4 mt-3 w-full table-auto border-separate border-spacing-x-4 border-spacing-y-2">
+  <tbody>
+    {% for education in site.data.resume.educations %}
+    <tr>
+      <td class="w-32 align-top">
+        <p>
+          {{ education.start-date }} {% if education.start-date %}-{% endif %} {{ education.end-date
+          }}
+        </p>
+      </td>
+      <td>
+        <p>
+          <b>{{ education.degree }}</b>
+          , {{ education.institution }}
+        </p>
+        <ul class="mt-2">
+          {% for award in education.awards %}
+          <li class="border-l-4 pl-4">
+            <p><b>{{ award.name }}</b></p>
+            <p>{{ award.description }}</p>
+          </li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
 </table>
 
-<div class="hidden print:block mt-48">
-    <p>I hereby certify that all information stated herewith are true and correct to the best of my knowledge and beliefs.</p>
-    <h3 class="mt-10 leading-tight"><b>{{ site.data.resume.personal-information.name | upcase }}</b></h3>
-    <p>{{ site.data.resume.personal-information.title }}</p>
-    <ul class="mt-2">
-        {% for contact-details in site.data.resume.personal-information.contact-details %}
-            <li><b>{{ contact-details.name }}</b>: {{ contact-details.value }}</li>
-        {% endfor %}
-    </ul>
+<div class="mt-20 hidden print:block">
+  <p>
+    I hereby certify that all information stated herewith are true and correct to the best of my
+    knowledge and beliefs.
+  </p>
+  <p class="mt-10">
+    <b>{{ site.data.resume.personal-information.name | upcase }}</b>
+  </p>
+  <p>{{ site.data.resume.personal-information.title }}</p>
+  <p class="mt-2"><b>M</b>: {{ site.data.resume.personal-information.mobile-number }}</p>
+  <!-- <p><b>Home Address</b>: {{ site.data.resume.personal-information.home-address }}</p> -->
+  <p><b>E</b>: {{ site.data.resume.personal-information.email-address }}</p>
+  <p><a href="{{ site.data.resume.personal-information.website }}">{{ site.data.resume.personal-information.website }}</a></p>
 </div>

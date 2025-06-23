@@ -88,21 +88,15 @@ tools:
     - Sass/Less
 
 social-media:
-  - name: Behance
-    icon: fab fa-behance-square
-    url: https://www.behance.net/jasperlepardo/
+  # - name: Behance
+  #   icon: fab fa-behance-square
+  #   url: https://www.behance.net/jasperlepardo/
   - name: Dribble
     icon: fab fa-dribbble-square
     url: https://dribbble.com/jasperlepardo/
-  - name: Facebook
-    icon: fab fa-facebook-square
-    url: https://www.facebook.com/jasperlepardo/
   - name: Github
     icon: fab fa-github-square
     url: https://github.com/jasperlepardo/
-  - name: Instagram
-    icon: fab fa-instagram-square
-    url: https://www.instagram.com/jasperlepardo/
   - name: LinkedIn
     icon: fab fa-linkedin
     url: https://www.linkedin.com/in/jasperlepardo/
