@@ -11,18 +11,18 @@
 #     description: Social Media App for ormer and current members of the US military
 #   - name: Senti AI
 #     description: Application for Tax Filing
-#   - name: Kwik.Insure
-#     description: A Marketplace for Insurance Products
 #   - name: RideRadar
 #     description: B2C Delivery Aggregator
 #   - name: The Farmer's Market
 #     description: A subscription-based marketplace for Fresh Produced
 #   - name: Sante
 #     description: Ecommerce application for a multilevel marketing company
-#   - name: Phollowup
-#     description: Appointment Management System for Small Business
+#   - name: Kwik.Insure
+#     description: A Marketplace for Insurance Products
 #   - name: Tiaxa
 #     description: Hotel Analytics tool
+#   - name: Phollowup
+#     description: Appointment Management System for Small Business
 #   highlight: false
 
 - position: Senior UI/UX Designer
@@ -30,7 +30,7 @@
   employee-type: Full-time
   website: https://www.oncoreservices.com/
   location: Sydney, NSW, AU
-  start-date: September 02, 2025
+  start-date: September 02, 2024
   end-date: 
   descriptions: 
   - Collaborate with project management and engineering to define and implement innovative solutions for the product direction, visuals and experience;
@@ -61,11 +61,13 @@
   - Conduct user research and evaluate user feedback;
   - Establish and promote design guidelines, best practices and standards.
   projects:
-  - name: Order Management System
+  - name: Restaurant Management System
     description: 
-  - name: Point of Sales 
+  - name: Point of Sales
     description: 
-  - name: Kitchen Display System 
+  - name: Kitchen Display System
+    description: 
+  - name: Customer Feedback Portal
     description: 
   highlight: true
 
@@ -87,7 +89,13 @@
   projects:
   - name: Care Management System
     description: 
-  - name: Support Worker Mobile App
+  - name: Rostering System
+    description: 
+  - name: Human Resource Management System
+    description: 
+  - name: Invoice Management System
+    description: 
+  - name: Support Worker App
     description: 
   highlight: true
 
@@ -114,11 +122,13 @@
   - Manage and oversee as to ensure that commercializable output information architecture, workflow, and layout are materialized within the given timeline and resources by carrying out detailed scenarios created on the UX core principles and concept.
   - Perform self-validation such as rapid prototyping and external validation, and incorporate the validation outcome to the final output for improvement.
   projects:
-  - name: Samsung Retail Solutions
+  - name: Retail Incentive Management Tool
     description: 
   - name: Retail Inventory Management Tool
     description: 
-  - name: Mobile Payment System
+  - name: QR Mobile Payment System
+    description: 
+  - name: Employee Internal Tools
     description: 
   highlight: true
 
@@ -137,7 +147,10 @@
   - Leads other designers to develop holistic, high-quality user experience solutions for moderate to complex projects, products, and services
   - Represents the user experience design team for all phases of larger and more-complex development and design projects and programs
   - Provides guidance and mentoring to less-experienced staff members
-  highlight: true
+  projects:
+  - name: 
+    description: 
+  highlight: false
 
 
 - position: Senior UI/UX Designer

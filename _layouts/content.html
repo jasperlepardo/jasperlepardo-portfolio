@@ -6,10 +6,10 @@ custom-stylesheet:
 
 <div class="mx-auto mt-4 lg:mt-10 max-w-4xl">
   <h1>{{ page.heading }}</h1>
-  <p class="mt-6 border-l-4 border-zinc-300 pl-4 dark:text-zinc-300 text-lg lg:text-xl"><b>TL;DR</b>: {{ page.summary }}</p>
+  <blockquote class="mt-6 border-l-4 border-zinc-300 pl-4 dark:text-zinc-300 text-lg lg:text-xl"><b>TL;DR</b>: {{ page.summary }}</blockquote>
 </div>
 
-<img class="mt-4 lg:mt-10 rounded-lg lg:rounded-2xl" loading="lazy" src="{{ site.baseurl }}/assets/img/{{ page.title | downcase | replace: ' ','-' }}.png" alt=""/>
+<img class="mt-4 lg:mt-10 rounded-lg lg:rounded-2xl" loading="lazy" src="{{ site.baseurl }}/assets/img/{{ page.company }}/banner-{{ page.thumbnail }}.png" alt=""/>
 
 <div class="mt-4 lg:mt-10 grid grid-flow-row lg:grid-cols-3 gap-4 rounded-lg lg:rounded-2xl bg-zinc-50 p-6 lg:p-12 text-zinc-800">
   {% for project-overview in page.project-overview %}
